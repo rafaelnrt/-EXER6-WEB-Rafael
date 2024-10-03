@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gerador de Lista!</h1>
+        <input type="text" id="numero" placeholder="Digite um número">
+        <input type="text" id="nome" placeholder="Digite seu nome">
+        <button id="botao">Gerar Lista</button>
+        <p id="mensagem"></p>
+        <ul id="lista"></ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+------------------------------------------------------------------------------
+body{
+  padding: 25px;
+}
+.title {
+	color: #5C6AC4;
+}
+------------------------------------------------------------------------------
+document.getElementById('botao').addEventListener('click', function() {
+    const numero = parseInt(document.getElementById('numero').value);
+    const nome = document.getElementById('nome').value;
+    const mensagem = document.getElementById('mensagem');
+    const lista = document.getElementById('lista');
+
+    lista.innerHTML = '';
+    mensagem.textContent = '';
+
+    if (isNaN(numero) || numero <= 0) {
+        mensagem.textContent = 'Por Favor, insira um número válido e um nome.';
+    } else if (numero > 1) {
+        for (let i = 1; i <= numero; i++) {
+            const item = document.createElement('li');
+            item.textContent = `${i}. ${nome}`;
+            lista.appendChild(item);
+        }
+    }
+});
